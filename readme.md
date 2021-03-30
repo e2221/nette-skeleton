@@ -1,4 +1,4 @@
-##Nette web skeleton
+#Nette web skeleton
 keywords:
    - Nette 3.1
    - Nittro js
@@ -26,7 +26,8 @@ parameters:
         homeDirectory: home
 ```
 
-2) Configure XDEBUG (optional only for production) - do before docker-compose
+2) Configure XDEBUG (optional but do it before build containers)
+   
    Create config file in .docker/xdebug/xdebug.ini with content:
 ```
 zend_extension=xdebug.so
@@ -55,4 +56,4 @@ sudo chmod -R 777 log/
 sudo chmod -R 777 temp/
 ```
 
-4) Switch off debug mode (optional only for production) in app/Bootstrap.php
+4) Switch off debug mode (optional) in app/Bootstrap.php
