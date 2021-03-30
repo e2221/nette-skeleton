@@ -8,5 +8,4 @@ use App\UI\FrontendModule\BasePresenter;
 
 class HomepagePresenter extends BasePresenter
 {
-
 }
