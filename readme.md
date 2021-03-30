@@ -1,3 +1,11 @@
+##Nette web skeleton
+keywords:
+   - Nette 3.1
+   - Nittro js
+   - Nextras ORM
+   - e2221/nette-grid, e2221/bootstrap-components, e2221/utils
+   - contributte/forms-bootstrap
+
 ###Instalation
 1) Create configuration file /app/config/local.neon with structure:
 ```
@@ -7,8 +15,8 @@ parameters:
     database:
         host: database
         database: databasename
-        username: cyklorysavy
-        password: ***
+        username: user
+        password: password
 
     #ftp configuration
     ftp:
@@ -34,12 +42,17 @@ xdebug.start_with_request=yes
 ```
 
 2) Build docker containers
+   
+   There is prepared Makefile, so you can use only this command
+```make upb```
+   
+   Without Makefile:
    ```docker-compose up -d --build```
 
-3) Permissions to folders:
+3) Permissions to folders (not nested if you used ```make upb```)
 ```
 sudo chmod -R 777 log/
 sudo chmod -R 777 temp/
 ```
 
-4) Switch off debug mode (optional only for production)
+4) Switch off debug mode (optional only for production) in app/Bootstrap.php

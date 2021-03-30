@@ -31,10 +31,10 @@ services:
     volumes:
       - ./.docker/database:/docker-entrypoint-initdb.d:cached,ro
     environment:
-      MYSQL_ROOT_PASSWORD: lFGkdaiv865aAG
-      MYSQL_USER: veterans
-      MYSQL_PASSWORD: lFGkdaiv865aAG
-      MYSQL_DATABASE: veterans
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: databasename
     ports:
       - 3306:3306
 
