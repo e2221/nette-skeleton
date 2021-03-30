@@ -1,0 +1,54 @@
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+di:
+	export:
+		parameters: no
+		tags: no
+
+database:
+	dsn: 'mysql:host=127.0.0.1;dbname=test'
+	user:
+	password:
+
+dbal:
+    driver: mysqli
+    host: %database.host%
+    database: %database.database%
+    username: %database.username%
+    password: %database.password%
+
+latte:
+    macros:
+        - Nittro\Bridges\NittroLatte\NittroMacros
+
+extensions:
+    dbal: Nextras\Dbal\Bridges\NetteDI\DbalExtension
+    nextras.orm: Nextras\Orm\Bridges\NetteDI\OrmExtension
+    - Contributte\EventDispatcher\DI\EventDispatcherExtension
+    - Nittro\Bridges\NittroDI\NittroExtension
+
+nextras.orm:
+    model: App\Model\Orm\NextrasOrm
+
+services:
+	- App\Router\RouterFactory::createRouter
+	acl:
+	    factory: App\UserACL\AuthorizationFactory::create()
+	authenticator: App\UserACL\Authenticator
+	- app\Factories\FtpFactory(%ftp%)
+
+includes:
+    - model.neon
+    - controls.neon
+    - globals.neon

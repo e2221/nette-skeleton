@@ -1,0 +1,12 @@
+parameters:
+
+    global:
+        brand: 'KlasikVeteranKlub'
+        loginSessionRemember: '7 days'
+        loginSessionStandard: '30 minutes'
+        loginRoute: ':Backend:Login:default'
+        logoutRoute: ':Backend:Login:logout'
+        YES_OPTION: ANO
+        NO_OPTION: NE
+
+

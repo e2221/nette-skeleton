@@ -1,0 +1,10 @@
+services:
+    - App\Model\Managers\GlobalManager(%global%)
+    - App\Model\Managers\MainMenu\MainMenuManager
+    - App\UserACL\UserACLFacade
+    - App\UserACL\UserACLManager
+    - App\UserACL\RolesACLManager
+    - App\UserACL\PrivilegesACLManager
+    - App\UserACL\ResourcesACLManager
+    - App\UserACL\RolesResourcesACLManager
+    - App\UserACL\UserRolesACLManager

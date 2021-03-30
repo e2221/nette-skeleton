@@ -1,0 +1,7 @@
+app/config/local.neon
+.docker/xdebug/xdebug.ini
+vendor
+temp
+composer.lock
+.idea
+.docker/ftp/data

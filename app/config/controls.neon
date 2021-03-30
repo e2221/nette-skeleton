@@ -1,0 +1,3 @@
+services:
+    - App\Model\Managers\MainMenu\IMainMenuFactory
+    - App\UI\BackendModule\Components\LoginForm\LoginFormFactory

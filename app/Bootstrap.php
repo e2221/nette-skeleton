@@ -14,6 +14,7 @@ class Bootstrap
 		$configurator = new Configurator;
 		$appDir = dirname(__DIR__);
 
+        $configurator->setDebugMode(true);
 		//$configurator->setDebugMode('secret@23.75.345.200'); // enable for your remote IP
 		$configurator->enableTracy($appDir . '/log');
 
@@ -24,8 +25,8 @@ class Bootstrap
 			->addDirectory(__DIR__)
 			->register();
 
-		$configurator->addConfig($appDir . '/config/common.neon');
-		$configurator->addConfig($appDir . '/config/local.neon');
+		$configurator->addConfig($appDir . '/app/config/common.neon');
+		$configurator->addConfig($appDir . '/app/config/local.neon');
 
 		return $configurator;
 	}

@@ -1,0 +1,55 @@
+{templateType App\BackendModule\Components\MainMenu\MainMenuTemplate}
+{varType App\Model\MainMenu\MainMenuEntity[] $children}
+
+<nav class="navbar navbar-dark navbar-expand-lg sticky-top bg-dark flex-lg-nowrap p-0 shadow">
+    <button n:if="isset($sidebarId) === true" title="Sidebar Toggler" class="navbar-toggler d-lg-none collapsed" type="button" data-toggle="collapse" data-target="#{$sidebarId}" aria-controls="{$sidebarId}" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a n:ifcontent class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 d-none d-lg-block" href="#">{$brand}</a>
+    <button title="Main Menu Toggler" class="navbar-toggler d-lg-none collapsed" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainMenu">
+
+        <ul n:snippet="menu" n:inner-foreach="$menu as $key => $menuItem" class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+            {var bool $hasChildren = (bool) $menuItem->children->count()}
+            {php
+                $children = $menuItem->children;
+            }
+            <li n:class="$hasChildren ? 'nav-item dropdown' : 'nav-item'">
+                <a {if empty($menuItem->url) === false}href="{plink $menuItem->url}"{/if}  n:class="$hasChildren ? 'nav-link dropdown-toggle' : 'nav-link'"{if $hasChildren} role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{/if}>
+                    {$menuItem->title}
+                </a>
+
+                <div n:if="$hasChildren" n:inner-foreach="$children as $childID => $child" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {if empty($menuItem->url) === false}
+                        {first}
+                            <a class="dropdown-item" href="{plink $menuItem->url}">{$menuItem->title}</a>
+                            <div class="dropdown-divider"></div>
+                        {/first}
+                    {/if}
+                    {continueIf $child->isAllowedViewForMe === false}
+                    <a class="dropdown-item" {if empty($child->url) === false}href="{plink $child->url}"{/if}>{$child->title}</a>
+                </div>
+
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item text-nowrap {$user->isLoggedIn() ? 'dropdown'}">
+                {if $user->isLoggedIn()}
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Logged as {$user->getIdentity()->login}
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{$logoutLink}" data-ajax="false"><i class="fas fa-user"></i> Sign out</a>
+                        </div>
+                    </div>
+                {else}
+                    <a class="nav-link btn btn-outline-primary btn-sm" href="{$loginLink}" data-ajax="false"><i class="fas fa-user"></i> Login</a>
+                {/if}
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,36 @@
+{templateType App\UI\BackendModule\Components\LoginForm\LoginFormTemplate}
+
+<form n:name="signInForm" class="form-signin">
+    <div class="text-center mb-4">
+        <h1 class="h3 mb-3 font-weight-normal">{$company}</h1>
+    </div>
+
+    {if $signInForm->hasErrors()}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {foreach $signInForm->errors as $errorKey => $error}
+                {$error}<br>
+            {/foreach}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {/if}
+
+    <div class="form-label-group">
+        <input n:name="username" type="text" id="username" class="form-control" placeholder="User Login" required>
+        <label for="username">User Login</label>
+    </div>
+
+    <div class="form-label-group">
+        <input n:name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <label for="inputPassword">Password</label>
+    </div>
+
+    <div class="checkbox mb-3">
+        <label>
+            <input n:name="remember" type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; {$company} {date('Y')}</p>
+</form>

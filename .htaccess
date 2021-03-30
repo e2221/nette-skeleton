@@ -1,1 +1,33 @@
-Require all denied
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^$ www/ [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !^www/
+    RewriteRule ^(.*)$ www/$1
+</IfModule>
+
+<Files "composer.json">
+  Order Allow,Deny
+  Deny from all
+</Files>
+
+<Files "composer.lock">
+  Order Allow,Deny
+  Deny from all
+</Files>
+
+<Files "docker-compose.yml">
+  Order Allow,Deny
+  Deny from all
+</Files>
+
+<Files "phpstan.neon">
+  Order Allow,Deny
+  Deny from all
+</Files>
+
+<Files "readme.md">
+  Order Allow,Deny
+  Deny from all
+</Files>
