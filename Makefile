@@ -33,6 +33,8 @@ exec: $(NAME)
 	sudo docker-compose exec $(NAME) bash
 
 permissions: ## Permissions to folders
+	sudo docker-compose exec web mkdir -p temp
+	sudo docker-compose exec web mkdir -p log
 	sudo docker-compose exec web chmod -R 0777 temp/ log/
 
 docker-up: ## Up containers
@@ -45,7 +47,7 @@ ubuntu-ip: ## Get ip address ubuntu
 	hostname -I
 
 cacher: ## Remove cache
-	sudo docker-compose exec web rm -r temp/cache/
+	sudo docker-compose exec web rm -rf temp/cache/
 
 cacher-latte: ## Remove latte cache
-	sudo docker-compose exec web rm -r temp/cache/latte/
+	sudo docker-compose exec web rm -rf temp/cache/latte/

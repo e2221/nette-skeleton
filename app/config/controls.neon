@@ -1,3 +1,9 @@
 services:
+    - App\Factories\BootstrapFormFactory
+    - app\Factories\CustomBFormFactory
+    - App\Factories\FormFactory
+    - app\Factories\FtpFactory
+    - App\Factories\NetteGridFactory
+    - App\Factories\TabsFactory
     - App\Model\Managers\MainMenu\IMainMenuFactory
     - App\UI\BackendModule\Components\LoginForm\LoginFormFactory
