@@ -2,7 +2,7 @@ services:
     - App\Factories\BootstrapFormFactory
     - app\Factories\CustomBFormFactory
     - App\Factories\FormFactory
-    - app\Factories\FtpFactory
+    - app\Factories\FtpFactory(%ftp%)
     - App\Factories\NetteGridFactory
     - App\Factories\TabsFactory
     - App\Model\Managers\MainMenu\IMainMenuFactory
