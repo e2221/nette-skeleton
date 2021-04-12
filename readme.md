@@ -24,6 +24,19 @@ parameters:
         username: admin
         password: ***
         homeDirectory: home
+        
+    #smtp configuration
+    smtpMailer:
+        host: smtp.klasikveteranklub.cz
+        port: 587
+        username: sraz@klasikveteranklub.cz
+        password: ****
+        secure: tls
+        context:
+            ssl:
+                verify_peer: false
+                verify_peer_name: false
+                allow_self_signed: true
 ```
 
 2) Configure XDEBUG (optional but do it before build containers)
